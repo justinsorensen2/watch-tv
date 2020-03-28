@@ -23,10 +23,12 @@ const Featured = () => {
   const alt = `${name} poster`
   return (
     <li className="Card2">
-      <h2>Featured Show</h2>
-      <img src={image} alt={alt}></img>
-      <h3>{name}</h3>
-      <p>{overview}</p>
+      <a href={`/tvShow/${featured.id}`}>
+        <h2>Featured Show</h2>
+        <img src={image} alt={alt}></img>
+        <h3>{name}</h3>
+        <p>{overview}</p>
+      </a>
     </li>
   )
 }
