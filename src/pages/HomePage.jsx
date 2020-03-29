@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
 import axios from 'axios'
 import TvShow from '../components/TvShow'
 

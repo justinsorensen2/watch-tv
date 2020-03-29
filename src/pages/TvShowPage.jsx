@@ -19,9 +19,12 @@ const TvShowPage = (props) => {
   }
 
   //import API poll data into state on page load
-  useEffect((props) => {
-    getShowDetails(props)
-  }, [])
+  useEffect(
+    (props) => {
+      getShowDetails(props)
+    },
+    [showId]
+  )
 
   const image = `https://image.tmdb.org/t/p/w185_and_h278_bestv2${summary.backdrop_path}`
   const alt = `${summary.name} poster`
