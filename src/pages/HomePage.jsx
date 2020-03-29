@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
 import axios from 'axios'
-import Featured from '../components/Featured'
 import TvShow from '../components/TvShow'
 
 const HomePage = () => {
   const [tvShows, setTvShows] = useState([])
+  const [featured, setFeatured] = useState({})
 
   const getTopRated = async () => {
     const resp = await axios.get(
@@ -12,6 +13,7 @@ const HomePage = () => {
     )
     console.log(resp.data.results)
     setTvShows(resp.data.results)
+    setFeatured(resp.data.results[Math.round(Math.random() * 20)])
   }
 
   useEffect(() => {
@@ -19,18 +21,35 @@ const HomePage = () => {
     getTopRated()
   }, [])
 
+  const name = featured.name
+  const poster_path = featured.poster_path
+  const overview = featured.overview
+  const image = `https://image.tmdb.org/t/p/w185_and_h278_bestv2${poster_path}`
+  const alt = `${name} poster`
+
   return (
     <div>
-      <Featured></Featured>
+      <article className="Card2">
+        <a href={`/tv/${featured.id}`}>
+          <h2>Featured Show</h2>
+          <img src={image} alt={alt}></img>
+          <h3>{name}</h3>
+          <p>{overview}</p>
+        </a>
+      </article>
       <ul className="TopRated">
         {tvShows.map((tvShow) => {
           return (
-            <TvShow
-              key={tvShow.id}
-              name={tvShow.name}
-              overview={tvShow.overview}
-              poster_path={tvShow.poster_path}
-            />
+            <>
+              <a href={`/tv/${tvShow.id}`}>
+                <TvShow
+                  key={tvShow.id}
+                  name={tvShow.name}
+                  overview={tvShow.overview}
+                  poster_path={tvShow.poster_path}
+                ></TvShow>
+              </a>
+            </>
           )
         })}
       </ul>

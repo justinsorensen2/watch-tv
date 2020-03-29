@@ -2,7 +2,6 @@ import React from 'react'
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
 import TvShowPage from './pages/TvShowPage'
 import HomePage from './pages/HomePage'
-import Search from './pages/Search'
 import NotFound from './pages/NotFound'
 
 const App = () => {
@@ -18,8 +17,8 @@ const App = () => {
               </Link>
             </li>
             <li>
-              <Link to="/2" className="Link">
-                Search
+              <Link to="/tv" className="Link">
+                Show Details
               </Link>
             </li>
           </ul>
@@ -27,8 +26,7 @@ const App = () => {
       </header>
       <Switch>
         <Route exact path="/" component={HomePage}></Route>
-        <Route exact path="/tvShow" component={TvShowPage}></Route>
-        <Route exact path="/2" component={Search}></Route>
+        <Route exact path="/tv" component={TvShowPage}></Route>
         <Route path="*" component={NotFound}></Route>
       </Switch>
     </Router>

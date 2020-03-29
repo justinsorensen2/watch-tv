@@ -7,29 +7,20 @@ const TvShowPage = (props) => {
   const [details, setDetails] = useState([])
   const [summary, setSummary] = useState({})
 
-  //poll api for cast
+  //poll api for cast and show summary
   const getShowDetails = async () => {
     const respDetails = await axios.get(
       `https://api.themoviedb.org/3/tv/${showId}/credits?api_key=e39bd4d7934850f869dcfd33c094d2bc&language=en-US`
     )
     setDetails(respDetails.data.cast)
     console.log('details' + respDetails)
-  }
-
-  //poll API for show summary
-  const getShowSummary = async () => {
-    console.log(showId)
-    const respSummary = await axios.get(
-      `https://api.themoviedb.org/3/tv/${showId}?api_key=e39bd4d7934850f869dcfd33c094d2bc&language=en-US&page=1`
-    )
-    setSummary(respSummary.data)
-    console.log(respSummary.data)
+    setSummary(respDetails.data)
+    console.log(respDetails.data)
   }
 
   //import API poll data into state on page load
-  useEffect(() => {
-    getShowDetails()
-    getShowSummary()
+  useEffect((props) => {
+    getShowDetails(props)
   }, [])
 
   const image = `https://image.tmdb.org/t/p/w185_and_h278_bestv2${summary.backdrop_path}`
