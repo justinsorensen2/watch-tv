@@ -17,7 +17,7 @@ const App = () => {
               </Link>
             </li>
             <li>
-              <Link to="/tv" className="Link">
+              <Link to="/tv:showID" className="Link">
                 Show Details
               </Link>
             </li>
@@ -26,7 +26,7 @@ const App = () => {
       </header>
       <Switch>
         <Route exact path="/" component={HomePage}></Route>
-        <Route exact path="/tv" component={TvShowPage}></Route>
+        <Route exact path="/tv/:showId" component={TvShowPage}></Route>
         <Route path="*" component={NotFound}></Route>
       </Switch>
     </Router>
