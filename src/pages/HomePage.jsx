@@ -29,7 +29,7 @@ const HomePage = () => {
   return (
     <div>
       <article className="Card2">
-        <a href={`/tv/${featured.id}`}>
+        <a href={`/tv/${featured.id}`} id={featured.id}>
           <h2>Featured Show</h2>
           <img src={image} alt={alt}></img>
           <h3>{name}</h3>
