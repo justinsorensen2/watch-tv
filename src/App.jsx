@@ -16,11 +16,6 @@ const App = () => {
                 Top Rated
               </Link>
             </li>
-            <li>
-              <Link to="/tv:showID" className="Link">
-                Show Details
-              </Link>
-            </li>
           </ul>
         </nav>
       </header>
