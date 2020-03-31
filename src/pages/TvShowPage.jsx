@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
 const TvShowPage = (props) => {
-  const showId = props.match.params.showID
+  const showId = props.match.params.showId
 
   const [details, setDetails] = useState([])
   const [summary, setSummary] = useState([])
@@ -10,10 +10,10 @@ const TvShowPage = (props) => {
   //poll api for cast and show summary
   const getShowDetails = async () => {
     const respDetails = await axios.get(
-      `https://api.themoviedb.org/3/tv/${showID}/credits?api_key=e39bd4d7934850f869dcfd33c094d2bc&language=en-US`
+      `https://api.themoviedb.org/3/tv/${showId}/credits?api_key=e39bd4d7934850f869dcfd33c094d2bc&language=en-US`
     )
     const summaryResp = await axios.get(
-      `https://api.themoviedb.org/3/tv/${showID}?api_key=e39bd4d7934850f869dcfd33c094d2bc&language=en-US&page=1`
+      `https://api.themoviedb.org/3/tv/${showId}?api_key=e39bd4d7934850f869dcfd33c094d2bc&language=en-US&page=1`
     )
     setSummary(summaryResp.data)
     console.log(summaryResp.data)
